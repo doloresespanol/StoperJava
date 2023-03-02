@@ -17,6 +17,7 @@ public class PacakActivity extends AppCompatActivity {
     private ArrayList<ImageView> obrazki = new ArrayList<>();
     private int sekundy=10;
     private int punkty=0;
+    boolean running = true;
     private TextView czasTextView;
     private TextView punktyTextView;
 
@@ -38,10 +39,14 @@ public class PacakActivity extends AppCompatActivity {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                sekundy--;
-                pokazWybranyObraz();
-                czasTextView.setText("Czas: "+String.valueOf(sekundy));
-                handler.postDelayed(this,1000);
+                if(sekundy==0){
+                    running=false;
+                }else{
+                    sekundy--;
+                    pokazWybranyObraz();
+                    czasTextView.setText("Czas: "+String.valueOf(sekundy));
+                    handler.postDelayed(this,1000);
+                }
             }
 
         });
