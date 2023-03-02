@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int sekundy = 0;
+    float sekundy = 0;
     boolean running = true;
     TextView textView;
     Button btn;
@@ -25,10 +25,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(running) {
-                    sekundy+=1;
-                    textView.setText(Integer.toString(sekundy));
+                    sekundy+=0.1;
+                    textView.setText(Float.toString(sekundy));
                 }
-                handler.postDelayed(this,1000);
+                handler.postDelayed(this,100);
             }
         });
         btn.setOnClickListener(new View.OnClickListener() {
